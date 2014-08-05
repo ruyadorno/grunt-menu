@@ -1,51 +1,26 @@
-/*
- * grunt-menu
- * https://github.com/ruyadorno/grunt-menu
- *
- * Copyright (c) 2014 Ruy Adorno
- * Licensed under the MIT license.
- */
+var log = require('simple-output');
 
-'use strict';
+var info = require('../package.json');
+var messages = require('./lib/messages');
+var mainMenu = require('./lib/main-menu');
+
+
+// ---
+
 
 module.exports = function (grunt) {
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  var taskManager = grunt.registerTask('menu', 'Add an useful menu for listing/executing your configured tasks.', function () {
 
-  grunt.registerMultiTask('menu', 'Add an useful menu for listing/executing your configured tasks.', function () {
+    var done = this.async();
 
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+    log.success(messages.welcome.replace('{{version}}', info.version));
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function (file) {
-      // Concat specified files.
-      var src = file.src.filter(function (filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function (filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+    mainMenu.showMainMenu(grunt, taskManager._tasks, done);
 
-      // Handle options.
-      src += options.punctuation;
+    //console.log(taskManager._tasks);
 
-      // Write the destination file.
-      grunt.file.write(file.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + file.dest + '" created.');
-    });
   });
 
 };
+
