@@ -18,8 +18,6 @@ module.exports = function (grunt) {
 
     mainMenu.showMainMenu(grunt, taskManager._tasks, done);
 
-    //console.log(taskManager._tasks);
-
   });
 
 };

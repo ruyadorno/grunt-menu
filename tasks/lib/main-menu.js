@@ -40,7 +40,6 @@ function showMainMenu(grunt, tasks, done) {
     choices: choices.arr
   };
 
-  console.log(choices);
   return inquirer.prompt([initMenuPrompt], function mainMenuQuestionCallback(answer) {
     choices.dic[answer.mainMenu].run.call(grunt.task, answer.mainMenu);
     done();
