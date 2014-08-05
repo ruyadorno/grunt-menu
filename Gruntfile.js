@@ -26,9 +26,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Configuration to be run (and then tested).
-    menu: {},
-
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
@@ -39,11 +36,8 @@ module.exports = function (grunt) {
   // Actually load this plugin's task(s).
   grunt.loadTasks('tasks');
 
-  // Whenever the "test" task is run, first clean the "tmp" dir, then run this
-  // plugin's task(s), then test the result.
   grunt.registerTask('test', ['nodeunit']);
 
-  // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
 
 };
