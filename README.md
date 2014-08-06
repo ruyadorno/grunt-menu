@@ -42,7 +42,7 @@ To invoke the menu just run the `grunt menu` task:
 grunt menu
 ```
 
-That's all, a menu interface should appear and allow you to select which task to run.
+That's it, a menu interface should appear and allow you to select which task to run.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
