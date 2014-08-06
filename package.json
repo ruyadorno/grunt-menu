@@ -9,7 +9,10 @@
     "url": "http://ruyadorno.com"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "menu",
+    "interface",
+    "grunt"
   ],
   "main": "Gruntfile.js",
   "engines": {
