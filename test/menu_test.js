@@ -1,6 +1,7 @@
 var grunt = require('grunt');
 
 var getChoices = require('../tasks/lib/get-choices');
+var showMenu = require('../tasks/lib/show-menu');
 
 var tasksData = require('./samples/tasks-data');
 var getChoicesExpected = require('./expected/get-choices');
@@ -89,6 +90,28 @@ exports.menu = {
       getChoicesExpected,
       'Should be different from original data after adding a choice'
     );
+
+    test.done();
+  },
+
+
+  // ---
+
+
+  testExitMainMenu: function (test) {
+    test.expect(1);
+
+    // Mock process.exit to test
+    var _exitFn = process.exit;
+    process.exit = function (code) {
+      test.equal(code, 0);
+      process.exit = _exitFn;
+    };
+
+    var prompt = showMenu(grunt, tasksData, 'mainMenu');
+
+    prompt.rl.emit("keypress", "", { name : "up" });
+    prompt.rl.emit("line");
 
     test.done();
   }
