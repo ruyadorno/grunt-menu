@@ -23,6 +23,7 @@
   "devDependencies": {
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-nodeunit": "~0.3.0",
+    "grunt-sg-release": "~0.2.2",
     "grunt": "~0.4.2",
     "jshint-stylish": "~0.1.5",
     "load-grunt-tasks": "~0.3.0"
