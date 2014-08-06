@@ -23,8 +23,34 @@ var grunt = require('grunt');
 */
 
 exports.menu = {
+
   setUp: function (done) {
     // setup here if necessary
     done();
+  },
+
+  testGetChoices: function (test) {
+    test.expect(1);
+
+    var tasksData = require('./samples/tasks-data');
+    var getChoices = require('../tasks/lib/get-choices');
+    var getChoicesExpected = require('./expected/get-choices');
+
+    var choices = getChoices(grunt, tasksData);
+
+    // excludes run methods from the tests
+    choices.arr.forEach(function (item) {
+      item.run = '';
+    });
+
+    test.deepEqual(
+      choices,
+      getChoicesExpected,
+      'Should be able to transform raw tasks info into required data'
+    );
+
+    test.done();
   }
+
 };
+
