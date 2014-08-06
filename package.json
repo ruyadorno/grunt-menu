@@ -1,6 +1,6 @@
 {
   "name": "grunt-menu",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Useful menu interface for listing/executing your configured tasks",
   "homepage": "https://github.com/ruyadorno/grunt-menu",
   "repository": "https://github.com/ruyadorno/grunt-menu",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-nodeunit": "~0.3.0",
+    "grunt-sg-release": "~0.2.2",
     "grunt": "~0.4.2",
     "jshint-stylish": "~0.1.5",
     "load-grunt-tasks": "~0.3.0"

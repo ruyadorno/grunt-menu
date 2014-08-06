@@ -26,6 +26,21 @@ module.exports = function (grunt) {
       }
     },
 
+    sg_release: {
+      options: {
+        skipBowerInstall: true,
+        developBranch: 'develop',
+        masterBranch: 'master',
+        files: [
+          'package.json',
+          'README.md'
+        ],
+        commitMessage: 'Release v%VERSION%',
+        commitFiles: ['-a'], // '-a' for all files
+        pushTo: 'origin'
+      }
+    },
+
     // Unit tests.
     nodeunit: {
       tests: ['test/*_test.js']
@@ -37,6 +52,8 @@ module.exports = function (grunt) {
   grunt.loadTasks('tasks');
 
   grunt.registerTask('test', ['nodeunit']);
+
+  grunt.registerTask('release', ['sg_release']);
 
   grunt.registerTask('default', ['jshint', 'test']);
 
