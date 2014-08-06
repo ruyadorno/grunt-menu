@@ -4,6 +4,6 @@ module.exports = {
   complete: 'see all tasks',
   back: 'go back',
   exit: 'exit',
-  exitConfirmation: 'Leaving Grunt Menu. Bye!'
+  exitConfirmation: '\nLeaving Grunt Menu. Bye!'
 };
 
