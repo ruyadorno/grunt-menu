@@ -1,5 +1,6 @@
 var inquirer = require('inquirer');
 
+var exit = require('./exit');
 var getChoices = require('./get-choices');
 var messages = require('./messages');
 
@@ -7,9 +8,17 @@ var messages = require('./messages');
 // ---
 
 
+// Extra menu options
+var exitChoice = {
+  name: messages.exit,
+  value: 'exit',
+  run: exit
+};
+
 function showMainMenu(grunt, tasks, done) {
 
-  var choices = getChoices(grunt, tasks);
+  var choices = getChoices(grunt, tasks, true);
+  choices.addChoice(exitChoice);
 
   var initMenuPrompt = {
     type: 'list',
