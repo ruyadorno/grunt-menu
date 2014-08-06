@@ -2,7 +2,7 @@ var log = require('simple-output');
 
 var info = require('../package.json');
 var messages = require('./lib/messages');
-var mainMenu = require('./lib/main-menu');
+var showMenu = require('./lib/show-menu');
 
 
 // ---
@@ -16,7 +16,7 @@ module.exports = function (grunt) {
 
     log.success(messages.welcome.replace('{{version}}', info.version));
 
-    mainMenu.showMainMenu(grunt, taskManager._tasks, done);
+    showMenu(grunt, taskManager._tasks, 'mainMenu', done);
 
   });
 
