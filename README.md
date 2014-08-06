@@ -12,6 +12,7 @@ version: 0.0.0
 This plugin is intended to just add a simple menu interface for browsing and eventually executing your configured tasks.
 
 See what it looks like:
+![Executing plugin example](http://i.imgur.com/ojC1tXi.png)
 
 
 ## Getting Started
