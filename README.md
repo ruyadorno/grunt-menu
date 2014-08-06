@@ -55,6 +55,17 @@ grunt menu --multi
 It will behave like a checkbox list, where you select items using **space** and run the selected commands with the **enter** key.
 
 
+## Pro tip
+
+Add the menu task as your default task, that way anytime a new person come accross your project they just need to run `grunt` and have a nice overview of the available tasks.
+
+Just add/replace the following line in your **Gruntfile**:
+
+```js
+grunt.registerTask('default', ['menu']);
+```
+
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
