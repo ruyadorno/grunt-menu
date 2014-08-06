@@ -108,9 +108,32 @@ exports.menu = {
       process.exit = _exitFn;
     };
 
-    var prompt = showMenu(grunt, tasksData, 'mainMenu');
+    var prompt = showMenu(grunt, tasksData, 'mainMenu', 'list');
 
     prompt.rl.emit("keypress", "", { name : "up" });
+    prompt.rl.emit("line");
+
+    test.done();
+  },
+
+
+  // ---
+
+
+  testExitMultiMode: function (test) {
+    test.expect(1);
+
+    // Mock process.exit to test
+    var _exitFn = process.exit;
+    process.exit = function (code) {
+      test.equal(code, 0);
+      process.exit = _exitFn;
+    };
+
+    var prompt = showMenu(grunt, tasksData, 'mainMenu', 'checkbox');
+
+    prompt.rl.emit("keypress", "", { name : "up" });
+    prompt.rl.emit("keypress", "", { name : "space" });
     prompt.rl.emit("line");
 
     test.done();

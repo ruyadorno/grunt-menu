@@ -38,11 +38,28 @@ var extraChoices = {
 // ---
 
 
-module.exports = function showMenu(grunt, tasks, type, done) {
+module.exports = function showMenu(grunt, tasks, type, mode, done) {
 
   function openExtraChoice(optionChosen) {
-    showMenu(grunt, tasks, optionChosen, done);
+    showMenu(grunt, tasks, optionChosen, mode, done);
     return false;
+  }
+
+  function runTaskFor(answer) {
+
+    var shouldDo = true;
+
+    if (!answer.mainMenu.forEach) {
+      answer.mainMenu = [answer.mainMenu];
+    }
+
+    answer.mainMenu.forEach(function (choice) {
+      if (!choices.dic[choice].run.call(grunt.task, choice)) {
+        shouldDo = false;
+      }
+    });
+
+    return shouldDo;
   }
 
 
@@ -60,14 +77,14 @@ module.exports = function showMenu(grunt, tasks, type, done) {
   });
 
   var mainMenuPrompt = {
-    type: 'list',
+    type: mode,
     name: 'mainMenu',
     message: messages.mainMenu,
     choices: choices.arr
   };
 
   return inquirer.prompt([mainMenuPrompt], function mainMenuQuestionCallback(answer) {
-    if (choices.dic[answer.mainMenu].run.call(grunt.task, answer.mainMenu)) {
+    if (runTaskFor(answer)) {
       done();
     }
   });

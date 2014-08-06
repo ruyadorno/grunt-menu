@@ -2,7 +2,7 @@
 
 > Useful menu interface for listing/executing your configured tasks.
 
-version: 0.1.0
+version: 0.2.0
 
 [![Build Status](https://travis-ci.org/ruyadorno/grunt-menu.svg?branch=master)](https://travis-ci.org/ruyadorno/grunt-menu)
 
@@ -43,6 +43,17 @@ grunt menu
 ```
 
 That's it, a menu interface should appear and allow you to select which task to run.
+
+### Multi task mode
+
+If you want to invoke more than one task at once, you can activate the multiple tasks mode:
+
+```shell
+grunt menu --multi
+```
+
+It will behave like a checkbox list, where you select items using **space** and run the selected commands with the **enter** key.
+
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
