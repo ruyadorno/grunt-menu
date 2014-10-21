@@ -3,8 +3,14 @@ function addChoice(obj) {
   this.arr.push(obj);
 }
 
+function getTaskLabel(grunt, options, tasks, key) {
+  return grunt.option('info') || options.info ?
+    tasks[key].name + ' - ' + tasks[key].info :
+    tasks[key].name;
+}
+
 // Gets an object with both an array and a dictionary of choices
-module.exports = function getChoices(grunt, tasks, onlyLocalTasks) {
+module.exports = function getChoices(grunt, options, tasks, onlyLocalTasks) {
 
   var arr = [];
   var dic = {};
@@ -17,7 +23,7 @@ module.exports = function getChoices(grunt, tasks, onlyLocalTasks) {
       }
 
       dic[key] = {
-        name: tasks[key].name,
+        name: getTaskLabel(grunt, options, tasks, key),
         value: key,
         run: grunt.task.run
       };
