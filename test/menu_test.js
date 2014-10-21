@@ -5,6 +5,7 @@ var showMenu = require('../tasks/lib/show-menu');
 
 var tasksData = require('./samples/tasks-data');
 var getChoicesExpected = require('./expected/get-choices');
+var getChoicesInfoExpected = require('./expected/get-choices-with-info');
 
 
 // ---
@@ -43,7 +44,7 @@ exports.menu = {
   testGetChoices: function (test) {
     test.expect(1);
 
-    var choices = getChoices(grunt, tasksData);
+    var choices = getChoices(grunt, {}, tasksData);
 
     // excludes run methods from the tests
     choices.arr.forEach(function (item) {
@@ -66,10 +67,65 @@ exports.menu = {
   // ---
 
 
+  testGetChoicesWithInfo: function (test) {
+    test.expect(1);
+
+    var choices = getChoices(grunt, { info: true }, tasksData);
+
+    // excludes run methods from the tests
+    choices.arr.forEach(function (item) {
+      item.run = '';
+    });
+
+    // Have to delete func to test agains dummy data
+    delete choices.addChoice;
+
+    test.deepEqual(
+      choices,
+      getChoicesInfoExpected,
+      'Should be able to transform raw tasks info into required data'
+    );
+
+    test.done();
+  },
+
+
+  // ---
+
+
+  testGetChoicesWithInfoOption: function (test) {
+    test.expect(1);
+
+    // mocks the --info cli option
+    grunt.option('info', true);
+
+    var choices = getChoices(grunt, {}, tasksData);
+
+    // excludes run methods from the tests
+    choices.arr.forEach(function (item) {
+      item.run = '';
+    });
+
+    // Have to delete func to test agains dummy data
+    delete choices.addChoice;
+
+    test.deepEqual(
+      choices,
+      getChoicesInfoExpected,
+      'Should be able to transform raw tasks info into required data'
+    );
+
+    test.done();
+  },
+
+
+  // ---
+
+
   testAddChoice: function (test){
     test.expect(1);
 
-    var choices = getChoices(grunt, tasksData);
+    var choices = getChoices(grunt, {}, tasksData);
 
     // excludes run methods from the tests
     choices.arr.forEach(function (item) {
@@ -108,7 +164,7 @@ exports.menu = {
       process.exit = _exitFn;
     };
 
-    var prompt = showMenu(grunt, tasksData, 'mainMenu', 'list');
+    var prompt = showMenu(grunt, {}, tasksData, 'mainMenu', 'list');
 
     prompt.rl.emit("keypress", "", { name : "up" });
     prompt.rl.emit("line");
@@ -130,7 +186,7 @@ exports.menu = {
       process.exit = _exitFn;
     };
 
-    var prompt = showMenu(grunt, tasksData, 'mainMenu', 'checkbox');
+    var prompt = showMenu(grunt, {}, tasksData, 'mainMenu', 'checkbox');
 
     prompt.rl.emit("keypress", "", { name : "up" });
     prompt.rl.emit("keypress", "", { name : "space" });
