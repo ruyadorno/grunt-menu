@@ -1,6 +1,6 @@
 {
   "name": "grunt-menu",
-  "version": "1.0.1-rc",
+  "version": "1.0.1",
   "description": "Useful menu interface for listing/executing your configured tasks",
   "homepage": "https://github.com/ruyadorno/grunt-menu",
   "repository": "https://github.com/ruyadorno/grunt-menu",
