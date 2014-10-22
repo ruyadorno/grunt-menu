@@ -54,6 +54,14 @@ grunt menu --multi
 
 It will behave like a checkbox list, where you select items using **space** and run the selected commands with the **enter** key.
 
+### Descriptive mode
+
+You can configure the menu task to exhibit the description of each task along with its name. It can be configured within you Gruntfile tasks by setting `{ info: true }` in your menu task configuration options or when invoking the Grunt command on shell:
+
+```shell
+grunt menu --info
+```
+
 
 ## Pro tip
 
