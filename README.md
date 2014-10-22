@@ -2,7 +2,7 @@
 
 > Useful menu interface for listing/executing your configured tasks.
 
-version: 1.0.0
+version: 1.0.1-rc
 
 [![Build Status](https://travis-ci.org/ruyadorno/grunt-menu.svg?branch=master)](https://travis-ci.org/ruyadorno/grunt-menu)
 
