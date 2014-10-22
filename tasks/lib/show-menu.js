@@ -38,10 +38,12 @@ var extraChoices = {
 // ---
 
 
-module.exports = function showMenu(grunt, tasks, type, mode, done) {
+module.exports = function showMenu(grunt, options, tasks, type, done) {
+
+  var mode = grunt.option('multi') ? 'checkbox' : 'list';
 
   function openExtraChoice(optionChosen) {
-    showMenu(grunt, tasks, optionChosen, mode, done);
+    showMenu(grunt, options, tasks, optionChosen, mode, done);
     return false;
   }
 
@@ -53,7 +55,7 @@ module.exports = function showMenu(grunt, tasks, type, mode, done) {
       answer.mainMenu = [answer.mainMenu];
     }
 
-    answer.mainMenu.forEach(function (choice) {
+    answer.mainMenu.forEach(function forEachMainMenuAnswer(choice) {
       if (!choices.dic[choice].run.call(grunt.task, choice)) {
         shouldDo = false;
       }
@@ -67,7 +69,7 @@ module.exports = function showMenu(grunt, tasks, type, mode, done) {
 
 
   var isMainMenu = type === 'mainMenu';
-  var choices = getChoices(grunt, tasks, isMainMenu);
+  var choices = getChoices(grunt, options, tasks, isMainMenu);
 
   extraChoices[type].forEach(function loopThroughChoices(item) {
     if (item.run === '') {
