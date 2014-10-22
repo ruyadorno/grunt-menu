@@ -116,7 +116,7 @@ module.exports = {
       run: ''
     },
     {
-      name: 'build - Alias for "clean:dist", "useminPrepare", "concurrent:dist", "concat", "copy", "ngmin", "cssmin", "uglify", "rev", "usemin" tasks.',
+      name: 'build - Alias for "clean:dist", "useminPrepare", "concurrent:dist", "concat",...',
       value: 'build',
       run: ''
     },
@@ -248,7 +248,7 @@ module.exports = {
       run: ''
     },
     build: {
-      name: 'build - Alias for "clean:dist", "useminPrepare", "concurrent:dist", "concat", "copy", "ngmin", "cssmin", "uglify", "rev", "usemin" tasks.',
+      name: 'build - Alias for "clean:dist", "useminPrepare", "concurrent:dist", "concat",...',
       value: 'build',
       run: ''
     },

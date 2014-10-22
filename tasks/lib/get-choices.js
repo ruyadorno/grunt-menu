@@ -4,9 +4,18 @@ function addChoice(obj) {
 }
 
 function getTaskLabel(grunt, options, tasks, key) {
-  return grunt.option('info') || options.info ?
+
+  var info = grunt.option('info') || options.info ?
     tasks[key].name + ' - ' + tasks[key].info :
     tasks[key].name;
+
+  // limit row size to 80 characters
+  if (info.length > 80) {
+    info = info.substr(0, 77) + '...';
+  }
+
+  return info;
+
 }
 
 // Gets an object with both an array and a dictionary of choices
