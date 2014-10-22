@@ -55,7 +55,7 @@ module.exports = function showMenu(grunt, options, tasks, type, done) {
       answer.mainMenu = [answer.mainMenu];
     }
 
-    answer.mainMenu.forEach(function (choice) {
+    answer.mainMenu.forEach(function forEachMainMenuAnswer(choice) {
       if (!choices.dic[choice].run.call(grunt.task, choice)) {
         shouldDo = false;
       }
