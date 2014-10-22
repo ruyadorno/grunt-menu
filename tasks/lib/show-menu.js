@@ -43,7 +43,7 @@ module.exports = function showMenu(grunt, options, tasks, type, done) {
   var mode = grunt.option('multi') ? 'checkbox' : 'list';
 
   function openExtraChoice(optionChosen) {
-    showMenu(grunt, tasks, optionChosen, mode, done);
+    showMenu(grunt, options, tasks, optionChosen, mode, done);
     return false;
   }
 
