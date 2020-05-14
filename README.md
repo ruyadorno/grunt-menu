@@ -61,6 +61,15 @@ You can configure the menu task to exhibit the description of each task along wi
 ```shell
 grunt menu --info
 ```
+or
+```javascript
+// place inside gruntfile inside the object passed to initConfig
+menu: {
+  options: {
+    info: true
+  }
+}
+```
 
 
 ## Pro tip
